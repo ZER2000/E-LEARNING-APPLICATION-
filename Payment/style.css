@@ -32,20 +32,6 @@
 .nav{
     font-size: 80%;
 }
-
-
-.rectan1{
-    background-color: rgba(240, 249, 255, 1);
-}
-.rectan2{
-    background-color:rgba(254, 246, 251, 1);
-}
-.rectan3{
-    background-color: rgba(254, 251, 236, 1);
-}
-.rectan4{
-    background: linear-gradient(90deg, rgba(0,193,254,1) 0%, rgba(250,255,193,1) 100%);
-}
 .nvr{
     font-size: small;
 }
@@ -56,6 +42,7 @@
  
   .Sidbar{
       display: none !important;
+      width: 100px;
    }
    .nvr{
     font-size: x-small;
