@@ -27,7 +27,7 @@
                        <label for="exampleInputPassword1" class="form-label">Password</label>
                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
                   </div>
-                        <button  type="submit" class="btn bg-info text-white w-100"><a href="Dashboard/index.html" class="text-white text-decoration-none" target="_blank">SIGN IN</a> </button>
+                        <button  type="submit" class="btn bg-info text-white w-100"><a href="Dashboard/Dashboard.php" class="text-white text-decoration-none">SIGN IN</a> </button>
                   <div class="forget  mt-3 text-center">
                        <span>Forgot your password?<a class="text-info" href=""><strong> Reset Password</strong> </a></span>
                   </div>
