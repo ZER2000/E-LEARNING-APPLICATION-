@@ -44,14 +44,15 @@
                    <tbody> 
                         <?php 
                             $payment_list = array (
-                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png"),
-                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png"),
-                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png"),
-                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png"),
-                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png")
+                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/play.png"),
+                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/play.png"),
+                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/play.png"),
+                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/play.png"),
+                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/play.png")
                              );
-                             foreach ($payment_list as $info) {
-                                 
+                             include '../json/function.php';
+                             $payment= getpayment ();
+                             foreach ($payment as $info) {  
                                  echo '<tr>';
                                  echo '<td class="align-middle">'.$info['Name'].'</td>';
                                  echo '<td class="align-middle">'.$info['PaymentSchedule'].'</td>';

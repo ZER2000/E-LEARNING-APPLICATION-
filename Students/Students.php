@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="studt.css">
     <title>Student</title>
 </head>
 <body>
@@ -37,6 +37,7 @@
             <table class="table table-borderless">
                     <thead >
                       <tr class=" text-muted">
+                        <th>id</th>
                         <th scope="col"></th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
@@ -49,27 +50,23 @@
                     </thead>
                  <tbody>
                      <?php
-                         $students_list= array (
-                             array("img"=>"image/student.png", "Name"=>"username", "Email"=>"user@email.com", "Phone"=>"7305477760", "EnrollNumber"=>"1234567305477760", "Dateofadmission"=>"08-Dec-2021", "logo1"=>"image/vector (1).png", "logo2"=>"image/vector (2).png"),
-                             array("img"=>"image/student.png", "Name"=>"username", "Email"=>"user@email.com", "Phone"=>"7305477760", "EnrollNumber"=>"1234567305477760", "Dateofadmission"=>"08-Dec-2021", "logo1"=>"image/vector (1).png", "logo2"=>"image/vector (2).png"),
-                             array("img"=>"image/student.png", "Name"=>"username", "Email"=>"user@email.com", "Phone"=>"7305477760", "EnrollNumber"=>"1234567305477760", "Dateofadmission"=>"08-Dec-2021", "logo1"=>"image/vector (1).png", "logo2"=>"image/vector (2).png"),
-                             array("img"=>"image/student.png", "Name"=>"username", "Email"=>"user@email.com", "Phone"=>"7305477760", "EnrollNumber"=>"1234567305477760", "Dateofadmission"=>"08-Dec-2021", "logo1"=>"image/vector (1).png", "logo2"=>"image/vector (2).png"),
-                         );
-                         foreach ($students_list as $info) {
-                            echo '<tr><td></td></tr>';
+                         include '../json/function.php';
+                         $student= getstudent ();
+                         foreach ($student as $info) {
+                             echo '<tr><td></td></tr>';
                              echo ' <tr class ="">'; 
+                             echo '<td class="align-middle bg-white">'.$info['id'].'</td>';
                              echo '<td  scope="row" class="align-middle bg-white aligne-middle"><img src="'.$info['img'].'" alt=""></td>';
                              echo '<td class="align-middle bg-white">'.$info['Name'].'</td>';
                              echo '<td class="align-middle bg-white">'.$info['Email'].'</td>';
                              echo '<td class="align-middle bg-white">'.$info['Phone'].'</td>';
                              echo '<td class="align-middle bg-white">'.$info['EnrollNumber'].'</td>';
                              echo '<td class="align-middle bg-white">'.$info['Dateofadmission'].'</td>';
-                             echo '<td scope="row" class="align-middle bg-white"><img src="'.$info['logo1'].'" alt="logo1"></td>';
+                             echo '<td scope="row" class="align-middle bg-white "><a href="update.php?id='.$info["id"].'"><img src="'.$info['logo1'].'" alt="logo1"></a></td>';
                              echo '<td scope="row" class="align-middle bg-white"><img src="'.$info['logo2'].'" alt="Logo2"></td>';
                              echo ' </tr>';
                            };
                      ?>
- 
                 </tbody>
             </table>
         </section>
