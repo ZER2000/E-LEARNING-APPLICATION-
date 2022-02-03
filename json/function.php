@@ -1,5 +1,5 @@
 <?php
- function getpayment ()
+  function getpayment ()
   {
       return json_decode(file_get_contents(filename:__DIR__.'/pay.json'),true);
   }
