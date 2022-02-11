@@ -1,3 +1,4 @@
+<?php include '../Students/connection.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +27,11 @@
                                         <p class="mt-2">Students</p>
                                     </div>  
                                     <div  class="text-end pe-3">
-                                        <p class="fs-6"><strong>243</strong></p>
+                                    <?php $req="SELECT COUNT(*) as countstudent FROM students"; 
+                                        $result=mysqli_query($connect,$req);
+                                        while($row=mysqli_fetch_assoc($result)){
+                                         ?>    
+                                        <p class="fs-6"><strong><?php echo $row['countstudent'];}  ?></strong></p>
                                     </div>
                             </article>
                             <article class="rectan2 col-12  col-md-5 m-2  col-lg rounded-3">
@@ -35,7 +40,11 @@
                                         <p class="mt-2">Course</p>
                                     </div>  
                                     <div class="text-end pe-3">
-                                        <p class="fs-6"><strong>13</strong></p>
+                                    <?php $req="SELECT COUNT(*) as countcours FROM courses"; 
+                                        $result=mysqli_query($connect,$req);
+                                        while($row=mysqli_fetch_assoc($result)){
+                                         ?>  
+                                        <p class="fs-6"><strong><?php echo $row['countcours'];}     ?></strong></p>
                                     </div> 
                             </article> 
                         
@@ -45,7 +54,11 @@
                                         <p class="mt-2">Payments</p>
                                     </div>  
                                     <div class="text-end pe-3">
-                                        <p class="fs-6"><strong>DHS 556,000</strong></p>
+                                    <?php $req="SELECT SUM(amount_paid) as sommepayment FROM payment_details";
+                                        $result=mysqli_query($connect,$req);
+                                        while($row=mysqli_fetch_assoc($result)){
+                                            ?>      
+                                        <p class="fs-6"><strong><?php echo $row['sommepayment']."DHS";} ?></strong></p>
                                     </div> 
                             </article>
                             <article class="rectan4 col-12 col-md-5 m-2 col-lg rounded-3">

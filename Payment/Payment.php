@@ -1,3 +1,4 @@
+<?php include '../Students/connection.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +24,10 @@
               <div>
                   <p><strong>Payment Details</strong></p>
               </div>
-                <div class="pe-4">
-                  <img class="" src="image/Vector.png" alt="play"> 
-                </div>
+                <div>
+                  <img class="pe-4" src="image/Vector.png" alt="play"> 
+                  <button class="btn bg-info text-white fs-6 "><a href="addpayment.php"   class="text-white text-decoration-none" >ADD NEW PAYMENT</a></button>
+                </div>  
           </section> 
         
           <section  class="tab table-responsive mx-4  pt-2   ">
@@ -43,25 +45,36 @@
                      </thead>
                    <tbody> 
                         <?php 
-                            $payment_list = array (
-                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png"),
-                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png"),
-                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png"),
-                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png"),
-                                 array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png")
-                             );
-                             foreach ($payment_list as $info) {
+                            // $payment_list = array (
+                            //      array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png"),
+                            //      array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png"),
+                            //      array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png"),
+                            //      array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png"),
+                            //      array("Name"=>"Karthi", "PaymentSchedule"=>"First", "BillNumber"=>"00012223", "AmountPaid"=>"100,000DH", "BalanceAmount"=>"500,000DH", "Date"=>"05-Jan-2022","logo"=>"image/vector (3).png")
+                            //  );g ²& ²&a  
+                          $sql="select * from payment_details";
+                          $result=mysqli_query($connect,$sql);
+                          if($result){
+                            while($row=mysqli_fetch_assoc($result)){
+                              $id=$row['id'];
+                              $name=$row['name'];
+                              $paymentschedule=$row['payment_schedule'];
+                              $billnumber=$row['bill_number'];
+                              $amountpaid=$row['amount_paid'];
+                              $balanceamount=$row['balance_amount'];
+                              $date=$row['date'];
                                  
-                                 echo '<tr>';
-                                 echo '<td class="align-middle">'.$info['Name'].'</td>';
-                                 echo '<td class="align-middle">'.$info['PaymentSchedule'].'</td>';
-                                 echo '<td class="align-middle">'.$info['BillNumber'].'</td>';
-                                 echo '<td class="align-middle">'.$info['AmountPaid'].'</td>';
-                                 echo '<td class="align-middle">'.$info['BalanceAmount'].'</td>';
-                                 echo '<td class="align-middle">'.$info['Date'].'</td>';
-                                 echo '<td class="align-middle" scope="row" class="align-middle"><img src="'.$info['logo'].'" alt=""></td>';
-                                 echo '</tr>';
-                                        };
+                                echo '<tr>';
+                                echo '<td class="align-middle">'.$name.'</td>';
+                                echo '<td class="align-middle">'.$paymentschedule.'</td>';
+                                echo '<td class="align-middle">'.$billnumber.'</td>';
+                                echo '<td class="align-middle">'.$amountpaid.'</td>';
+                                echo '<td class="align-middle">'.$balanceamount.'</td>';
+                                echo '<td class="align-middle">'.$date.'</td>';
+                                echo '<td class="align-middle" scope="row" class="align-middle"><img src="image/vector (3).png" alt="vue"></td>';
+                                echo '</tr>';
+                                        }
+                                      }
                           ?>
                     </tbody>
               </table>

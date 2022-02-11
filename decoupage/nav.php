@@ -4,7 +4,7 @@
                             <a class="nav-link dropdown-toggle   rounded text-center text-muted " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Menu</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item text-muted  " href="../Dashboard/Dashboard.php"><img  class="pe-2 txet " src="image/Vector (13).png" alt="Home">Home</a></li>
-                                <li><a class="dropdown-item text-muted  " href="#"><img class="pe-2" src="image/Vector (12).png" alt="Course"> Course</a></li>
+                                <li><a class="dropdown-item text-muted  " href="../courses/courses.php"><img class="pe-2" src="image/Vector (12).png" alt="Course"> Course</a></li>
                                 <li><a class="dropdown-item text-muted " href="../Students/Students.php"><img class="pe-2" src="image/Vector (11).png" alt="student"> Students</a></li>
                                 <li><a class="dropdown-item text-muted  " href="../Payment/Payment.php"><img class="pe-2" src="image/Vector (8).png" alt="Payment"> Payment</a></li>
                                 <li><a class="dropdown-item text-muted " href="#"><img class="pe-2" src="image/Vector (9).png" alt="report"> Report</a></li>
