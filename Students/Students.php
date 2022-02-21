@@ -1,4 +1,9 @@
-<?php include 'connection.php' ?>
+<?php include 'connection.php';
+session_start(); 
+if(empty($_SESSION['name'])){
+     header("location: ../index.php");
+}else{
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +63,7 @@
                         //  );
                         $sql="select * from students";
                         $result=mysqli_query($connect,$sql);
-                        if($result){
+            
                           while($row=mysqli_fetch_assoc($result)){
                             $id=$row['id'];
                             $image=$row['image'];
@@ -80,7 +85,7 @@
                              echo '<td scope="row" class="align-middle bg-white"><a href="delete.php ?deleteid='.$id.'"><img src="image/vector (2).png" alt="Logo2"></a></td>';
                              echo ' </tr>';
                           }
-                        }                      
+                                           
                      ?>
  
                 </tbody>
@@ -91,6 +96,5 @@
   <script src="bootstrap.bundle.min.js"></script>  
 </body>
 </html>
-
-
+<?php  } ?>
 

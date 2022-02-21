@@ -1,3 +1,56 @@
+<?php
+session_start();
+include 'Students/connection.php';
+if(isset($_SESSION['name'])){
+     header("location: Dashboard/Dashboard.php");
+}else{
+
+$email=$password='';
+$errors=array('email'=>'','password'=>'','shek'=>'');  
+if(isset($_POST['submit'])){
+     if(empty($_POST['email'])){
+               $errors['email'] ='An email is required ';
+          }else{
+               $email=$_POST['email'];
+               if(!filter_var($email)){
+                    $errors['email'] ='email must be a valid email adress ';   
+               }
+          }
+     if(empty($_POST['password'])){
+               $errors['password'] ='An password is required';
+          }else{
+               $password=$_POST['password'];
+               if(!filter_var($password)){
+                    $errors['password'] = 'password must be a valid  ';   
+               }
+          }
+          
+if(!array_filter($errors)){
+$sql="select * from users where email='$email' && password='$password'";
+$result=mysqli_query($connect,$sql);
+$row=mysqli_fetch_assoc($result);
+$num=mysqli_num_rows($result);
+
+echo $num;
+
+     if($num== 1){
+          $_SESSION['email']=$row['email'];
+          $_SESSION['password']=$row['password'];
+          $_SESSION['name']=$row['name'];
+          if(isset($_POST['remember_me'])){
+               setcookie('email' , $_SESSION['email'] , time() + 60*60*24 ,  null , null , false , true);
+               setcookie('password' , $_SESSION['password'] , time() + 60*60*24 , null , null , false , true);
+          }else {
+               setcookie('email' , $_SESSION['email'] , time() + 60*20 ,  null , null , false , true);
+               setcookie('password' , $_SESSION['password'] , time() + 60*20 , null , null , false , true);
+          }
+          header("location: Dashboard/Dashboard.php");
+}else{
+     $errors['shek']='Email or password not valid ';
+  }
+}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,20 +69,25 @@
               </div>
               <div class="px-4 text-center">
                       <p class="sign"><strong>SIGN IN</strong></p>
-                      <p class="enter text-muted ">Enter your credentials to access your account</p>
+                     <p class="enter text-muted ">Enter your credentials to access your account</p>
               </div>
-              <form class="p-4">
+              <form class="p-4" method="POST">
                   <div class="mb-3">
+                       <div class="text-danger"><?php echo $errors['shek']   ?></div>
                        <label for="exampleInputEmail1" class="form-label ">Email</label>
-                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email">
+                       <input type="email" class="form-control" placeholder="Enter your email" name="email" value="<?php echo htmlspecialchars($email);  ?>">
+                       <div class="text-danger"><?php echo $errors['email']  ?></div>
                   </div>
                   <div class="mb-3">
                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
-                  </div>
-                        <button  type="submit" class="btn bg-info text-white w-100"><a href="Dashboard/Dashboard.php" class="text-white text-decoration-none">SIGN IN</a> </button>
+                       <input type="password" class="form-control" placeholder="Enter your password" name="password" value="<?php echo htmlspecialchars($password); ?>">
+                       <div class="text-danger"><?php echo $errors['password']  ?></div>
+                       <input type="checkbox" class="form-check-input" name="remember_me" >
+                       <label class="form-check-label" for="exampleCheck1">Remenber me</label>
+                    </div>
+                        <button  type="submit" class="btn bg-info text-white w-100" name="submit" >SIGN IN</button>
                   <div class="forget  mt-3 text-center">
-                       <span>Forgot your password?<a class="text-info" href=""><strong> Reset Password</strong> </a></span>
+                       <span>Forgot your password?<a class="text-info"><strong>Reset Password</strong> </a></span>
                   </div>
               </form>
           </div>
@@ -37,3 +95,4 @@
      <script src="/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<?php  }   ?>

@@ -1,4 +1,14 @@
-<?php include '../Students/connection.php' ?>
+<?php include '../Students/connection.php';
+session_start();
+if(!$_COOKIE['email'] && !$_COOKIE['password']){
+    header("location:../index.php");
+}
+
+if(empty($_SESSION['name'])){
+     header("location: ../index.php");
+}else{
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,3 +86,4 @@
     <script src="bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<?php  } ?>

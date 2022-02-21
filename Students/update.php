@@ -5,12 +5,13 @@ $result=mysqli_query($connect,$sql);
 $row=mysqli_fetch_assoc($result);
     $image=$row['image'];
     $name=$row['name'];
-    $email=$row['email'];
+    $email=$row['email'];                 
     $phone=$row['phone'];
     $enrole_number=$row['enrole_number'];
     $date_of_admission=$row['date_of_admission'];
 
-if(isset($_POST['submit'])){
+
+if(isset($_POST['submit'])) {
     $image=$_POST['image'];
     $name=$_POST['name'];
     $email=$_POST['email'];
@@ -18,9 +19,9 @@ if(isset($_POST['submit'])){
     $enrole_number=$_POST['enrole_number'];
     $date_of_admission=$_POST['date_of_admission'];
 
-    $sql="UPDATE students set id=$id,image='$image' ,name='$name' ,email='$email' ,phone='$phone' ,enrole_number='$enrole_number' ,date_of_admission='$date_of_admission' where id=$id" ;
+    $sql="UPDATE students set image='$image' ,name='$name' ,email='$email' ,phone='$phone' ,enrole_number='$enrole_number' ,date_of_admission='$date_of_admission' where id=$id" ;
     $result=$connect->query($sql);
-    header('location:Students.php');
+    header('location: Students.php');
 }
 ?>
 
