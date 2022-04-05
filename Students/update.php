@@ -3,7 +3,6 @@ $id=$_GET['updateid'];
 $sql="select * from students where id=$id";
 $result=mysqli_query($connect,$sql);
 $row=mysqli_fetch_assoc($result);
-    $image=$row['image'];
     $name=$row['name'];
     $email=$row['email'];                 
     $phone=$row['phone'];
@@ -12,14 +11,13 @@ $row=mysqli_fetch_assoc($result);
 
 
 if(isset($_POST['submit'])) {
-    $image=$_POST['image'];
     $name=$_POST['name'];
     $email=$_POST['email'];
     $phone=$_POST['phone'];
     $enrole_number=$_POST['enrole_number'];
     $date_of_admission=$_POST['date_of_admission'];
 
-    $sql="UPDATE students set image='$image' ,name='$name' ,email='$email' ,phone='$phone' ,enrole_number='$enrole_number' ,date_of_admission='$date_of_admission' where id=$id" ;
+    $sql="UPDATE students set  name='$name' ,email='$email' ,phone='$phone' ,enrole_number='$enrole_number' ,date_of_admission='$date_of_admission' where id=$id" ;
     $result=$connect->query($sql);
     header('location: Students.php');
 }
@@ -45,10 +43,6 @@ if(isset($_POST['submit'])) {
                       <p class="sign"><strong>Add student</strong></p>
               </div>
               <form class="px-4 py-2" method="POST">
-                  <div class="mb-1">
-                        <label class="form-label">Image student</label>
-                        <input class="form-control" type="file" name="image" value="<?php echo $image ?>">
-                  </div>
                   <div class="mb-1">
                        <label for="exampleInputEmail1" class="form-label ">Name</label>
                        <input type="text" class="form-control" name="name" value="<?php echo $name ?>">

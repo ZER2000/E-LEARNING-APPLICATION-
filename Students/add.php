@@ -1,4 +1,5 @@
-<?php include 'connection.php';
+<?php
+include 'connection.php';
 if(isset($_POST['submit'])){
     $name=$_POST['image'];
     $name=$_POST['name'];
@@ -6,7 +7,6 @@ if(isset($_POST['submit'])){
     $phone=$_POST['phone'];
     $enrole_number=$_POST['enrole_number'];
     $date_of_admission=$_POST['date_of_admission'];
-
     $sql="INSERT INTO students (image,name,email,phone,enrole_number,date_of_admission) VALUES ('$image','$name','$email','$phone','$enrole_number','$date_of_admission')";
     $result=$connect->query($sql);
     header('location:Students.php');
@@ -32,35 +32,42 @@ if(isset($_POST['submit'])){
               <div class="px-4 text-center">
                       <p class="sign"><strong>Add student</strong></p>
               </div>
-              <form class="px-4 py-2" method="POST">
-                  <div class="mb-1">
+              <form class="px-4 py-2" method="POST" id="form">
+                  <!-- <div class="mb-1">
                         <label class="form-label">Image student</label>
-                        <input class="form-control" type="file" name="image" REQUIRED>
-                  </div>
+                        <input class="form-control" type="file" name="image">
+                        <span class="text-danger" ></span>
+                  </div> -->
                   <div class="mb-1">
                        <label for="exampleInputEmail1" class="form-label ">Name</label>
-                       <input type="text" class="form-control" placeholder="Name" name="name" REQUIRED>
+                       <input type="text" class="form-control" placeholder="Name" name="name" id="name">
+                       <span class="text-danger" id="messagename" ></span>
+
                   </div>
                   <div class="mb-1">
                        <label for="exampleInputEmail1" class="form-label ">Email</label>
-                       <input type="email" class="form-control" placeholder="Email" name="email" REQUIRED>
+                       <input type="email" class="form-control" placeholder="Email" name="email" id="email" >
+                       <span class="text-danger" id="messageemail" ></span>
                   </div>
                   <div class="mb-1">
                        <label for="exampleInputEmail1" class="form-label ">Phone</label>
-                       <input type="number" class="form-control" placeholder="Phone" name="phone" REQUIRED>
+                       <input type="text" class="form-control" placeholder="Phone" name="phone" id="phone" >
+                       <span class="text-danger" id="messagephone" ></span>
                   </div>
                   <div class="mb-1">
                        <label  class="form-label ">Enrolle number</label>
-                       <input type="number" class="form-control" placeholder="Enrolle number" name="enrole_number" REQUIRED>
+                       <input type="text" class="form-control" placeholder="Enrolle number" name="enrole_number" id="number">
+                       <span class="text-danger" id="messagenumber" ></span>
                   </div>
                   <div class="mb-1">
                        <label for="exampleInputEmail1" class="form-label ">Date of admission</label>
-                       <input type="date" class="form-control" placeholder="Date of admission" name="date_of_admission" REQUIRED>
+                       <input type="date" class="form-control" placeholder="Date of admission" name="date_of_admission">
                   </div>
-                  <input name="submit" type="submit" class="btn bg-info text-white w-100" value="Add">
+                  <button  type="submit" class="btn bg-info text-white w-100" name="submit" >Add</button>
               </form>
           </div>
     </main>
-     <script src="/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="students.js"></script>
+
 </body>
 </html>

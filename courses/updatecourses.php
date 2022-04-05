@@ -39,15 +39,15 @@ if(isset($_POST['submit'])){
               <form class="p-4" method="POST">
                   <div class="mb-3">
                        <label for="exampleInputEmail1" class="form-label ">Name</label>
-                       <input type="text" class="form-control" name="name" value="<?php echo $name  ?>">
+                       <input type="text" class="form-control" name="name" value="<?php echo $name  ?>" REQUIRED>
                   </div>
                   <div class="mb-3">
                        <label for="exampleInputEmail1" class="form-label ">Date</label>
-                       <input type="date" class="form-control" name="date" value="<?php echo $date ?>">
+                       <input type="date" class="form-control" name="date" value="<?php echo $date ?>" REQUIRED>
                   </div>
                   <div class="mb-3">
                        <label for="exampleInputEmail1" class="form-label ">Links</label>
-                       <input type="text" class="form-control" name="links" value="<?php echo $links ?>">
+                       <input type="text" class="form-control" name="links" value="<?php echo $links ?>" REQUIRED>
                   </div>
                   <input name="submit" type="submit" class="btn bg-info text-white w-100" value="add">
               </form>

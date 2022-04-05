@@ -20,6 +20,7 @@ if(isset($_POST['submit'])){
                $errors['password'] ='An password is required';
           }else{
                $password=$_POST['password'];
+               $password=hash('md5' ,$password);
                if(!filter_var($password)){
                     $errors['password'] = 'password must be a valid  ';   
                }
@@ -59,7 +60,7 @@ echo $num;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>SIGN IN</title>
 </head>
 <body>
     <main class="signin d-flex justify-content-center align-items-center">
@@ -86,8 +87,9 @@ echo $num;
                        <label class="form-check-label" for="exampleCheck1">Remenber me</label>
                     </div>
                         <button  type="submit" class="btn bg-info text-white w-100" name="submit" >SIGN IN</button>
-                  <div class="forget  mt-3 text-center">
+                  <div class="forget  mt-3 text-center  ">
                        <span>Forgot your password?<a class="text-info"><strong>Reset Password</strong> </a></span>
+                       <span ><a class="text-info ms-5 " href="signup.php"><strong>sign up</strong></a></span>
                   </div>
               </form>
           </div>
